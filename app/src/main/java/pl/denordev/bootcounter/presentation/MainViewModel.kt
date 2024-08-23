@@ -17,6 +17,7 @@ data class MainScreenState(
     val bootEvents: List<BootEvent> = emptyList(),
     val error: String? = null
 )
+
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val bootEventsRepository: BootEventsRepository

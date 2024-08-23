@@ -53,11 +53,14 @@ android {
 }
 
 dependencies {
+    //Room
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
+    //Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
