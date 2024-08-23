@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import pl.denordev.bootcounter.domain.model.BootEvent
 import pl.denordev.bootcounter.domain.repository.BootEventsRepository
+import pl.denordev.bootcounter.presentation.utils.formatTimestamp
 import javax.inject.Inject
 import kotlin.coroutines.cancellation.CancellationException
 
@@ -26,7 +27,11 @@ class MainViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(MainScreenState())
     val uiState = _uiState.asStateFlow()
 
-    fun loadBootEvents() {
+    init {
+        loadBootEvents()
+    }
+
+    private fun loadBootEvents() {
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true) }
             try {
