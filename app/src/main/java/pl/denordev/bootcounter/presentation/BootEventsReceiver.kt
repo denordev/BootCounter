@@ -26,6 +26,7 @@ class BootEventsReceiver : BroadcastReceiver() {
     lateinit var repository: EventsRepositoryImpl
 
     override fun onReceive(context: Context?, intent: Intent?) {
+        if (context == null) return
         if (intent?.action == Intent.ACTION_BOOT_COMPLETED) {
             val timestamp = System.currentTimeMillis()
             val bootEvent = BootEvent(

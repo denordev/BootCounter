@@ -11,6 +11,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,10 +26,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val state = viewModel.uiState.collectAsState()
+            val state by viewModel.uiState.collectAsState()
+            state.notificationBody?.let { NotificationScheduler.showNotification(this, it) }
             BootCounterTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MainScreen(modifier = Modifier.padding(innerPadding), uiState = state.value)
+                    MainScreen(modifier = Modifier.padding(innerPadding), uiState = state)
                 }
             }
         }
