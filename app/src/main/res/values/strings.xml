@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BootCounter</string>
+    <string name="boot_events">Boot Events</string>
+    <string name="no_boots_detected">No boots detected</string>
+    <string name="boot_at">Boot at: %1$s - %2$s</string>
+    <string name="total_dismissals_allowed">Total dismissals allowed</string>
+    <string name="interval_between_dismissals_minutes">Interval between dismissals (minutes)</string>
 </resources>
